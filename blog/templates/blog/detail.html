@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+  {% block content %}
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.timestamp }}</p>
+<!--       <p>{{ post.timestamp | date:"1,F jS"}}</p> -->
+      <p>{{ post.body }}</p>
+  {% endblock %}
