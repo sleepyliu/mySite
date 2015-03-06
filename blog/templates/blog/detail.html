@@ -1,6 +1,5 @@
 {% extends "blog/base.html" %}
-{%load comments%}
-{% csrf_token %}
+{% load comments %}
 
     {% block title %}
     Blog - {{ post.title|escape }}
@@ -11,14 +10,10 @@
         <p>{{ post.timestamp }}</p>
         <p>{{ post.body }}</p>
         <form action="{% url 'blog:detail' post.id %}" method="post"> 
-            <input type="submit" value="Like" name="s"> 
-            <strong>{{ fav }} </strong>
+        {% csrf_token %}
+            <input type="submit" name="vote" value=" like {{ num }} " /> 
         </form>
-
- <!--            <button type="button"> like <strong>{{ fav }} hi</strong></button>
- -->
-
-
+        <h3>评论：</h3>
         {% render_comment_list for post %}
         <h3>发表你的评论：</h3>
         {% render_comment_form for post %}

@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, url
-
 from blog import views
 
 urlpatterns = patterns('',
@@ -7,6 +6,6 @@ urlpatterns = patterns('',
     url(r'^blog/$', views.blog, name='blog'),
     url(r'^blog/(?P<title_id>\d+)/$', views.detail, name='detail'),
     url(r'^archive/', views.archive, name='archive'),
-    url(r'^display_meta/', views.display_meta, name='display_meta'),
+    # url(r'^display_meta/', views.display_meta, name='display_meta'),
 
 )

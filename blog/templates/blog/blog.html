@@ -2,7 +2,7 @@
     {% block content %}
         {% for post in posts %}
         <h2><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h2>
-        <!--       <li>{{ post.timestamp|date:"Y-m-d H:i" }}</li> -->
+        <!-- <li>{{ post.timestamp|date:"Y-m-d H:i" }}</li> -->
         <p>{{ post.timestamp }}</p>
         <p>{{ post.body }}</p>
         {% endfor %}

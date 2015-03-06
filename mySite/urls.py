@@ -7,6 +7,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'', include('blog.urls',namespace="blog")),
-    # url(r'^blog/', include('blog.urls',namespace="blog")),
 
 )
