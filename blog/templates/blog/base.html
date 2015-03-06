@@ -1,15 +1,38 @@
-<html>
-      <style type="text/css">
-        body{color:#efd;background:#476;padding:0 5em;margin:0}
-        h1{padding:2em 1em;background:#675}
-        h2{color:#bf8;border-top:1px dotted #fff;margin-top:2em}
-        p{margin:1em 0}
-      </style>
-     
-      <body>
-        <h1>sleepyliu blog</h1>
-        <h3>万物有成理而不说</h3>
-        {% block content %}
-        {% endblock %}
-      </body>
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>Sleepyliu's Blog</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- end Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" />
+    <style type="text/css">
+      body{color:#efd;background:#476;padding:0 5em;margin:0}
+      h1{padding:2em 1em;background:#675}
+      h2{color:#bf8;border-top:1px dotted #fff;margin-top:2em}
+      p{margin:1em 0}
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1 style="font-family:Lobster;font-size:50px">Sleepyliu's Blog</h1>
+      <h3>万物有成理而不说</h3>
+    </div>
+    <div class='navbar navbar-inverse'>
+      <div class='nav-collapse'>
+        <ul class="nav">
+          <li class="active"><a href="{% url 'blog:blog' %}">Blog</a></li>
+          <li><a href="/archive">Archive</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+    </div>  
+    <!-- end header -->
+    {% block content %}
+    {% endblock %}
+  </body>
 </html>
+

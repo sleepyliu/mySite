@@ -1,8 +1,28 @@
 {% extends "blog/base.html" %}
-  {% block content %}
-      {% for post in posts %}
-      <h2><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h2>
-      <p>{{ post.timestamp }}</p>
-      <p>{{ post.body }}</p>
-      {% endfor %}
-  {% endblock %}
+    {% block content %}
+        {% for post in posts %}
+        <h2><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h2>
+        <!--       <li>{{ post.timestamp|date:"Y-m-d H:i" }}</li> -->
+        <p>{{ post.timestamp }}</p>
+        <p>{{ post.body }}</p>
+        {% endfor %}
+      
+        <div class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}"> {{posts.previous_page_number}} << </a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                </span>
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}"> {{posts.next_page_number}} >> </a>
+                {% endif %}
+            </span>
+        </div>
+    {% endblock %}
+
+
+

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from blog.models import BlogsPost
+from blog.models import BlogsPost,Favor
 
 
 class BlogsPostAdmin(admin.ModelAdmin):
@@ -16,4 +16,9 @@ class BlogsPostAdmin(admin.ModelAdmin):
     list_filter = ['timestamp']
     search_fields = ['Title']
 
+# class BlogsPostAdmin(admin.ModelAdmin):
+#     def likesti(self):
+#         return int(self.like)
+
 admin.site.register(BlogsPost,BlogsPostAdmin)
+admin.site.register(Favor)

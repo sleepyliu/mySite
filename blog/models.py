@@ -15,3 +15,11 @@ class BlogsPost(models.Model):
 
     def __str__(self):              # __unicode__ on Python 2
         return self.title
+
+
+class Favor(models.Model):
+    article = models.ForeignKey(BlogsPost)
+    like = models.IntegerField(default=0)
+
+    def __str__(self):              # __unicode__ on Python 2
+        return str(self.like)
