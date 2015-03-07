@@ -7,27 +7,22 @@
 
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/static/css/blog.css" >   
-
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" />
   </head>
 
   <body>
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="{% url 'blog:blog' %}">首页</a>
-          <a class="blog-nav-item" href="{% url 'blog:blog' %}">博客</a>
-          <a class="blog-nav-item" href="{% url 'blog:archive' %}">博文目录</a>
-          <a class="blog-nav-item" href="https://github.com/sleepyliu/mySite">源代码</a>
+          {% block nav %}
+          {% endblock %}
         </nav>
       </div>
     </div>
 
     <div class="container">
-
+      
       <div class="blog-header">
         <h1 class="blog-title">Sleepyliu's Blog</h1>
         <p class="lead blog-description">天地有大美而不言，万物有成理而不说.</p>
@@ -50,8 +45,9 @@
           <div class="sidebar-module">
             <h4>Archives</h4>
             <ol class="list-unstyled">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
+              <li><a href="{% url 'blog:search_by_day' %}">Today</a></li>
+              <li><a href="{% url 'blog:search_by_month' %}">This Month</a></li>
+              <li><a href="{% url 'blog:search_by_year' %}">This Year</a></li>
             </ol>
           </div>
           <div class="sidebar-module">

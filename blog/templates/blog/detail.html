@@ -1,13 +1,20 @@
 {% extends "blog/base.html" %}
 {% load comments %}
 
+    {% block nav %}
+        <a class="blog-nav-item" href="{% url 'blog:index' %}">首页</a>
+        <a class="blog-nav-item" href="{% url 'blog:blog' %}">博客</a>
+        <a class="blog-nav-item" href="{% url 'blog:archive' %}">博文目录</a>
+        <a class="blog-nav-item" href="https://github.com/sleepyliu/mySite">源代码</a>
+    {% endblock %}
+
     {% block content %}
         <div class="blog-post">
             <h2 class="blog-post-title"><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h2>
             <p class="blog-post-meta">{{ post.timestamp }} by sleepyliu </p>
             <hr>
             <p>{{ post.body }}</p>
-        </div><!-- /.blog-post -->
+        </div>
         
         <form action="{% url 'blog:detail' post.id %}" method="post"> 
         {% csrf_token %}

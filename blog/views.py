@@ -1,14 +1,22 @@
 from django.shortcuts import get_object_or_404,render
 # from django.template import loader,Context
-# from django.http import HttpResponse,Http404
+from django.http import HttpResponse,Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.models import BlogsPost
+from django.utils import timezone
+
+
+
+def index(request):
+    posts = BlogsPost.objects.all()[:3]
+    context = {'posts':posts}
+    return render(request,'blog/index.html',context)
 
 
 def blog(request):
     post_list = BlogsPost.objects.all()
 
-    paginator = Paginator(post_list, 2)
+    paginator = Paginator(post_list,4)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -56,10 +64,30 @@ def archive(request):
     return render(request,'blog/archive.html',context)
 
 
-# def display_meta(request):
-#     values = request.META.items()
-#     values.sort()
-#     html = []
-#     for k, v in values:
-#         html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
-#     return HttpResponse('<table>%s</table>' % '\n'.join(html))
+def search_by_day(request):
+    posts = BlogsPost.objects.filter(timestamp__day=timezone.now().day)
+
+    if len(posts)>=1:
+        context = {'posts':posts}
+        return render(request,'blog/archive.html',context)
+    else:
+        raise Http404("Sorry, no results")
+
+def search_by_month(request):
+    posts = BlogsPost.objects.filter(timestamp__month=timezone.now().month)
+
+    if len(posts)>=1:
+        context = {'posts':posts}
+        return render(request,'blog/archive.html',context)
+    else:
+        raise Http404("Sorry, no results")
+
+def search_by_year(request):
+    posts = BlogsPost.objects.filter(timestamp__year=timezone.now().year)
+
+    if len(posts)>=1:
+        context = {'posts':posts}
+        return render(request,'blog/archive.html',context)
+    else:
+        raise Http404("Sorry, no results")
+
