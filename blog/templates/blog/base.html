@@ -1,39 +1,80 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Sleepyliu's Blog</title>
-    <!-- Bootstrap -->
+
+    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" />
-    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <!-- end Bootstrap -->
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/static/css/blog.css" >   
+
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" />
-    <style type="text/css">
-      body{color:#efd;background:#476;padding:0 5em;margin:0}
-      h1{padding:2em 1em;background:#675}
-      h2{color:#bf8;border-top:1px dotted #fff;margin-top:2em}
-      p{margin:1em 0}
-    </style>
   </head>
 
   <body>
-    <div>
-      <h1 style="font-family:Lobster;font-size:50px">Sleepyliu's Blog</h1>
-      <h3>万物有成理而不说</h3>
-    </div>
-    <div class='navbar navbar-inverse'>
-      <div class='nav-collapse'>
-        <ul class="nav">
-          <li class="active"><a href="{% url 'blog:blog' %}">Blog</a></li>
-          <li><a href="/archive">Archive</a></li>
-          <!-- <li><a href="#">About</a></li> -->
-        </ul>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="{% url 'blog:blog' %}">首页</a>
+          <a class="blog-nav-item" href="{% url 'blog:blog' %}">博客</a>
+          <a class="blog-nav-item" href="{% url 'blog:archive' %}">博文目录</a>
+          <a class="blog-nav-item" href="https://github.com/sleepyliu/mySite">源代码</a>
+        </nav>
       </div>
-    </div>  
-    <!-- end header -->
-    {% block content %}
-    {% endblock %}
-    <!-- end content -->
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Sleepyliu's Blog</h1>
+        <p class="lead blog-description">天地有大美而不言，万物有成理而不说.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          {% block content %}
+          {% endblock %}
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>Bulit by <em>sleepyliu</em>.</p>
+            <p>Just for exercise.</p>
+            <p>python django</p>
+            <p>bootstrap</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/sleepyliu">GitHub</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog built by sleepyliu.</p>
+      <p>
+        <a href="/admin">管理登录</a>
+      </p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </body>
 </html>
 

@@ -1,20 +1,23 @@
 {% extends "blog/base.html" %}
 {% load comments %}
 
-    {% block title %}
-    Blog - {{ post.title|escape }}
-    {% endblock %}
-
     {% block content %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.timestamp }}</p>
-        <p>{{ post.body }}</p>
+        <div class="blog-post">
+            <h2 class="blog-post-title"><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="blog-post-meta">{{ post.timestamp }} by sleepyliu </p>
+            <hr>
+            <p>{{ post.body }}</p>
+        </div><!-- /.blog-post -->
+        
         <form action="{% url 'blog:detail' post.id %}" method="post"> 
         {% csrf_token %}
             <input type="submit" name="vote" value=" like {{ num }} " /> 
         </form>
+        <hr>
+
         <h3>评论：</h3>
         {% render_comment_list for post %}
+        
         <h3>发表你的评论：</h3>
         {% render_comment_form for post %}
     {% endblock %}
