@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+    {% block nav %}
+        <a class="blog-nav-item" href="{% url 'blog:index' %}">首页</a>
+        <a class="blog-nav-item" href="{% url 'blog:blog' %}">博客</a>
+        <a class="blog-nav-item active" href="{% url 'blog:archive' %}">博文目录</a>
+        <a class="blog-nav-item" href="https://github.com/sleepyliu/mySite">源代码</a>
+    {% endblock %}
+
+    {% block content %}
+        {% for post in posts %}
+            <div class="blog-post">
+                <h3><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h3>
+                <p class="blog-post-meta">{{ post.timestamp }} by sleepyliu </p>
+            </div>
+        {% endfor %}
+    {% endblock %}

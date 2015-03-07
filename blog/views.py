@@ -69,7 +69,7 @@ def search_by_day(request):
 
     if len(posts)>=1:
         context = {'posts':posts}
-        return render(request,'blog/archive.html',context)
+        return render(request,'blog/search.html',context)
     else:
         raise Http404("Sorry, no results")
 
@@ -78,7 +78,7 @@ def search_by_month(request):
 
     if len(posts)>=1:
         context = {'posts':posts}
-        return render(request,'blog/archive.html',context)
+        return render(request,'blog/search.html',context)
     else:
         raise Http404("Sorry, no results")
 
@@ -87,7 +87,7 @@ def search_by_year(request):
 
     if len(posts)>=1:
         context = {'posts':posts}
-        return render(request,'blog/archive.html',context)
+        return render(request,'blog/search.html',context)
     else:
         raise Http404("Sorry, no results")
 
