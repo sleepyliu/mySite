@@ -7,7 +7,7 @@ class BlogsPostAdmin(admin.ModelAdmin):
         ('Title',            {'fields': ['title']}),
         ('Content',          {'fields': ['body'], 'classes': ['collapse']}),
         ('Date information', {'fields': ['timestamp']}),
-        ('Votes',            {'fields': ['title']}),
+        ('Votes',            {'fields': ['votes']}),
     ]
 
     list_display = ('title','timestamp')

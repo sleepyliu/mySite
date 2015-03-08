@@ -13,7 +13,7 @@ class BlogsPost(models.Model):
 
     class Meta:
         ordering = ['-timestamp']
-
-    def __str__(self):              # __unicode__ on Python 2
+ 
+    def __unicode__(self):              # __unicode__ on Python 2  __str__ on Python 3
         return self.title
 
