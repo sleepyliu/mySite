@@ -3,6 +3,7 @@ from blog.models import BlogsPost
 
 
 class BlogsPostAdmin(admin.ModelAdmin):
+    """docstring for BlogsPostAdmin"""
     fieldsets = [
         ('Title',            {'fields': ['title']}),
         ('Content',          {'fields': ['body'], 'classes': ['collapse']}),

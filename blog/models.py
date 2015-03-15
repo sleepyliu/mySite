@@ -3,12 +3,11 @@ from django.db import models
 # Create your models here.
 class BlogsPost(models.Model):
 
-    """docstring for BlogsPost: 
-        define four fields: title,body,timestamp and votes"""
+    """docstring for BlogsPost"""
 
     title = models.CharField(max_length = 150)
     body = models.TextField()
-    timestamp = models.DateTimeField('date published')
+    timestamp = models.DateTimeField('date published',auto_now_add=True)
     votes = models.IntegerField(default=0)
 
     class Meta:

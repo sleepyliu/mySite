@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+    {% block nav %}
+        <a class="blog-nav-item" href="{% url 'blog:index' %}">首页</a>
+        <a class="blog-nav-item" href="{% url 'blog:blog' %}">博客</a>
+        <a class="blog-nav-item" href="{% url 'blog:archive' %}">博文目录</a>
+        <a class="blog-nav-item" href="https://github.com/sleepyliu/mySite">源代码</a>
+    {% endblock %}
+
+    {% block content %}
+        <h2>Edit Post</h2>
+        <form method = "POST">{% csrf_token %}
+            {{ form.as_ul }}
+            <button type="submit">Save</button>
+        </form>
+    {% endblock %}

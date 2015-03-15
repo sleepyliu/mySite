@@ -10,13 +10,16 @@
 
     {% block content %}
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h2>
+            <h2 class="blog-post-title"><a href="{% url 'blog:detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p class="blog-post-meta">{{ post.timestamp }} by sleepyliu </p>
             <hr>
-            <p>{{ post.body }}</p>
+            <p>{{ post.body|linebreaks }}</p>
         </div>
+
+        <h4><a href="{% url 'blog:post_edit' pk=post.pk %}">编辑</a></h4>
+        <h4><a href="{% url 'blog:post_del' pk=post.pk %}">删除</a></h4>
         
-        <form action="{% url 'blog:detail' post.id %}" method="post"> 
+        <form action="{% url 'blog:detail' pk=post.pk %}" method="post"> 
         {% csrf_token %}
             <input type="submit" name="vote" value=" like {{ num }} " /> 
         </form>
