@@ -1,6 +1,16 @@
 from django.db import models
 
 # Create your models here.
+class Tag(models.Model):
+    """docstring for Tags"""
+    tag_name = models.CharField(max_length=20)
+    create_time = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.tag_name
+
+
+
 class BlogsPost(models.Model):
 
     """docstring for BlogsPost"""
@@ -8,6 +18,7 @@ class BlogsPost(models.Model):
     title = models.CharField(max_length = 150)
     body = models.TextField()
     timestamp = models.DateTimeField('date published',auto_now_add=True)
+    tags = models.ManyToManyField(Tag, blank=True,null=True)
     votes = models.IntegerField(default=0)
 
     class Meta:

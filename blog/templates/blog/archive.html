@@ -12,6 +12,11 @@
             <div class="blog-post">
                 <h3><a href="{% url 'blog:detail' pk=post.pk %}">{{ post.title }}</a></h3>
                 <p class="blog-post-meta">{{ post.timestamp }} by sleepyliu </p>
+                <p> 标签：
+                    {% for tag in post.tags.all %}
+                        <small>{{ tag }}</small>
+                    {% endfor %}
+                </p>
             </div>
         {% endfor %}
 

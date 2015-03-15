@@ -11,6 +11,7 @@
         <h2>Edit Post</h2>
         <form method = "POST">{% csrf_token %}
             {{ form.as_ul }}
+            {{ tag.as_ul }}
             <button type="submit">Save</button>
         </form>
     {% endblock %}
